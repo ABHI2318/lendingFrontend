@@ -1,0 +1,30 @@
+<div class="login-container">
+  <div class="login-box">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="logIn()">
+      <div class="input-container">
+        <input type="text" placeholder="Enter your username" formControlName="username" class="input-field" />
+      </div>
+      <div class="input-container">
+        <input type="password" placeholder="Enter your password" formControlName="password" class="input-field" />
+      </div>
+
+      <!-- CAPTCHA -->
+      <div class="captcha-container">
+        <div class="captcha-box">
+          <span [innerHTML]="captchaText" class="captcha-text"></span>
+          <button type="button" (click)="generateCaptcha()" class="refresh-btn">↻</button>
+        </div>
+        <input type="text" placeholder="Enter CAPTCHA" formControlName="captchaInput" class="captcha-input" />
+        <div *ngIf="captchaError" class="text-danger">
+          <small>Incorrect CAPTCHA. Please try again.</small>
+        </div>
+      </div>
+
+      <button type="submit" class="login-btn">Log In</button>
+    </form>
+  </div>
+</div>
+<router-outlet></router-outlet>
+
+  
